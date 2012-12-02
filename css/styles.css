@@ -1,0 +1,314 @@
+body {
+    background-color: #000;
+    text-align: center;
+}
+
+.clear {clear:both;}
+
+#wrap {
+    margin: 0 auto;
+    padding: 10px;
+    width: 660px;
+    /*border: 2px solid #fff;*/
+    
+}
+
+#invaders {
+
+    margin: 20px 0;
+    
+    -moz-box-shadow: 0 0 2em #fff;
+    -webkit-box-shadow: 0 0 2em #fff;
+    box-shadow: 0 0 2em #fff;
+    
+    -moz-border-radius: .5em;
+    -webkit-border-radius: .5em;
+    border-radius: .5em;
+}
+
+
+
+#wrap header h1{
+    margin: 0;
+    font-family: 'Arbutus', cursive;
+    font-size: 3em;
+    color: #fff;
+    
+    -moz-text-shadow: 0 0 2em cyan;
+    -webkit-text-shadow: 0 0 2em cyan;
+    text-shadow: 0 0 2em cyan;
+    
+}
+
+
+#wrap footer {
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.invader {
+    width: 1em;
+    height: 1em;
+    overflow: hidden;
+    /*margin: 3em 5em 4em 5em;*/
+    margin: 3em 9em 4em 5em;
+    float:left;
+}
+
+.invader1{
+    box-shadow:
+        -3em -3em 0 0 lime, 
+        3em -3em 0 0 lime, 
+
+        -2em -2em 0 0 lime, 
+        2em -2em 0 0 lime, 
+
+
+        0 -1em 0 0 lime,
+        1em -1em 0 0 lime,
+        -1em -1em 0 0 lime, 
+        -3em -1em 0 0 lime, 
+        -2em -1em 0 0 lime, 
+        2em -1em 0 0 lime, 
+        3em -1em 0 0 lime, 
+
+
+        -1em 0 0 0 lime, 
+        1em 0 0 0 lime, 
+        -4em 0 0 0 lime, 
+        -3em 0 0 0 lime, 
+        3em 0 0 0 lime, 
+        4em 0 0 0 lime, 
+
+        -1em 1em 0 0 lime, 
+        0 1em 0 0 lime, 
+        1em 1em 0 0 lime, 
+        -2em 1em 0 0 lime, 
+        -3em 1em 0 0 lime, 
+        2em 1em 0 0 lime, 
+        3em 1em 0 0 lime, 
+        -5em 1em 0 0 lime, 
+        -4em 1em 0 0 lime, 
+        4em 1em 0 0 lime, 
+        5em 1em 0 0 lime, 
+
+        -1em 2em 0 0 lime, 
+        0 2em 0 0 lime, 
+        1em 2em 0 0 lime, 
+        -2em 2em 0 0 lime, 
+        -3em 2em 0 0 lime, 
+        2em 2em 0 0 lime, 
+        3em 2em 0 0 lime, 
+        -5em 2em 0 0 lime, 
+        5em 2em 0 0 lime, 
+
+        -5em 3em 0 0 lime, 
+        -3em 3em 0 0 lime, 
+        3em 3em 0 0 lime, 
+        5em 3em 0 0 lime, 
+
+        -2em 4em 0 0 lime, 
+        -1em 4em 0 0 lime, 
+        1em 4em 0 0 lime, 
+        2em 4em 0 0 lime; 
+    
+    background: lime;
+}
+
+.invader2{
+    box-shadow:
+        -3em -3em 0 0 fuchsia, 
+        3em -3em 0 0 fuchsia, 
+
+        -2em -2em 0 0 fuchsia, 
+        2em -2em 0 0 fuchsia, 
+        5em -2em 0 0 fuchsia, 
+        -5em -2em 0 0 fuchsia, 	
+
+        -3em -1em 0 0 fuchsia, 
+        -2em -1em 0 0 fuchsia, 
+        2em -1em 0 0 fuchsia, 
+        3em -1em 0 0 fuchsia, 
+        -5em -1em 0 0 fuchsia, 
+        5em -1em 0 0 fuchsia, 
+
+        -4em 0 0 0 fuchsia, 
+        -3em 0 0 0 fuchsia, 
+        3em 0 0 0 fuchsia, 
+        4em 0 0 0 fuchsia, 
+        -5em 0 0 0 fuchsia, 
+        0 0 0 1em fuchsia, 
+        5em 0em 0 0 fuchsia, 
+
+        0 1em 0 1em fuchsia, 
+        -2em 1em 0 0 fuchsia,
+        -3em 1em 0 0 fuchsia,
+        2em 1em 0 0 fuchsia,
+        3em 1em 0 0 fuchsia,
+        -5em 1em 0 0 fuchsia, 
+        -4em 1em 0 0 fuchsia, 
+        4em 1em 0 0 fuchsia, 
+        5em 1em 0 0 fuchsia, 
+
+        -2em 2em 0 0 fuchsia,
+        -3em 2em 0 0 fuchsia,
+        2em 2em 0 0 fuchsia,
+        3em 2em 0 0 fuchsia,
+        -4em 2em 0 0 fuchsia, 
+        4em 2em 0 0 fuchsia, 
+
+        -3em 3em 0 0 fuchsia, 
+        3em 3em 0 0 fuchsia, 
+
+        -4em 4em 0 0 fuchsia, 
+        4em 4em 0 0 fuchsia; 
+    background: fuchsia;
+}
+
+.invader3{
+    box-shadow:
+        0em -3em 0 0 cyan, 
+        -1em -3em 0 0 cyan, 
+        1em -3em 0 0 cyan, 
+
+        -2em -2em 0 0 cyan, 
+        2em -2em 0 0 cyan, 
+        -3em -2em 0 0 cyan, 
+        3em -2em 0 0 cyan, 
+        -4em -2em 0 0 cyan, 
+        4em -2em 0 0 cyan, 	
+        1em -2em 0 0 cyan, 
+        0 -2em 0 0 cyan, 
+        -1em -2em 0 0 cyan, 
+
+        1em -1em 0 0 cyan, 
+        0 -1em 0 0 cyan, 
+        -1em -1em 0 0 cyan, 
+        -3em -1em 0 0 cyan, 
+        -2em -1em 0 0 cyan, 
+        2em -1em 0 0 cyan, 
+        3em -1em 0 0 cyan, 
+        4em -1em 0 0 cyan, 
+        -4em -1em 0 0 cyan, 
+        -5em -1em 0 0 cyan, 
+        5em -1em 0 0 cyan, 
+
+        -4em 0 0 0 cyan, 
+        -3em 0 0 0 cyan, 
+        3em 0 0 0 cyan, 
+        4em 0 0 0 cyan, 
+        -5em 0em 0 0 cyan, 
+        5em 0em 0 0 cyan,  
+
+        0 1em 0 0 cyan, 
+        -1em 1em 0 0 cyan, 
+        1em 1em 0 0 cyan, 
+        -2em 1em 0 0 cyan, 
+        -3em 1em 0 0 cyan, 
+        2em 1em 0 0 cyan, 
+        3em 1em 0 0 cyan, 
+        -5em 1em 0 0 cyan, 
+        -4em 1em 0 0 cyan, 
+        4em 1em 0 0 cyan, 
+        5em 1em 0 0 cyan, 
+
+        -2em 2em 0 0 cyan, 
+        2em 2em 0 0 cyan,
+        -1em 2em 0 0 cyan,
+        1em 2em 0 0 cyan, 
+
+        0 3em 0 0 cyan,
+        -3em 3em 0 0 cyan, 
+        -2em 3em 0 0 cyan,
+        3em 3em 0 0 cyan, 
+        2em 3em 0 0 cyan, 
+
+        -4em 4em 0 0 cyan, 
+        4em 4em 0 0 cyan,
+        -5em 4em 0 0 cyan, 
+        5em 4em 0 0 cyan; 
+    background: cyan;
+}
+
+.invader4{
+    box-shadow:
+
+        1em -2em 0 0 indigo, 
+        0 -2em 0 0 indigo, 
+        -1em -2em 0 0 indigo, 
+        -2em -2em 0 0 indigo, 
+        2em -2em 0 0 indigo, 
+        -3em -2em 0 0 indigo, 
+
+
+        1em -1em 0 0 indigo, 
+        0 -1em 0 0 indigo, 
+        -1em -1em 0 0 indigo,
+        -3em -1em 0 0 indigo, 
+        -2em -1em 0 0 indigo, 
+        2em -1em 0 0 indigo, 
+        3em -1em 0 0 indigo, 
+        4em -1em 0 0 indigo, 
+        -4em -1em 0 0 indigo,
+        -5em -1em 0 0 indigo,
+
+        -6em 0 0 0 indigo, 
+        -5em 0 0 0 indigo, 
+        -4em 0 0 0 indigo, 
+        -3em 0 0 0 indigo, 
+        -2em 0 0 0 indigo, 
+        -1em 0 0 0 indigo, 
+        0em 0 0 0 indigo, 
+        1em 0 0 0 indigo, 
+        2em 0 0 0 indigo, 
+        3em 0 0 0 indigo, 
+        4em 0 0 0 indigo, 
+        5em 0 0 0 indigo, 
+
+        -7em 1em 0 0 indigo, 
+        -6em 1em 0 0 indigo, 
+        -4em 1em 0 0 indigo, 
+        -3em 1em 0 0 indigo,  	
+        -1em 1em 0 0 indigo, 
+        0em 1em 0 0 indigo, 
+        2em 1em 0 0 indigo, 
+        3em 1em 0 0 indigo, 
+        5em 1em 0 0 indigo, 
+        6em 1em 0 0 indigo, 
+
+        -8em 2em 0 0 indigo, 
+        -7em 2em 0 0 indigo, 
+        -6em 2em 0 0 indigo, 
+        -5em 2em 0 0 indigo, 
+        -4em 2em 0 0 indigo, 
+        -3em 2em 0 0 indigo, 
+        -2em 2em 0 0 indigo, 
+        -1em 2em 0 0 indigo, 
+        0em 2em 0 0 indigo, 
+        1em 2em 0 0 indigo, 
+        2em 2em 0 0 indigo, 
+        3em 2em 0 0 indigo, 
+        4em 2em 0 0 indigo, 
+        5em 2em 0 0 indigo,
+        6em 2em 0 0 indigo, 
+        7em 2em 0 0 indigo,
+
+        -6em 3em 0 0 indigo,
+        -5em 3em 0 0 indigo,
+        -4em 3em 0 0 indigo,
+        -1em 3em 0 0 indigo,
+        0 3em 0 0 indigo,
+        3em 3em 0 0 indigo,
+        4em 3em 0 0 indigo,
+        5em 3em 0 0 indigo,
+
+        -5em 4em 0 0 indigo,
+        4em 4em 0 0 indigo;
+    background: indigo;
+    width: 1em;
+    height: 1em;
+    overflow: hidden;
+    margin: 3em 8em 4em 8em;
+
+}
