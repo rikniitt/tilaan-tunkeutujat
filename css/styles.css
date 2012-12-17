@@ -1,5 +1,5 @@
 body {
-    background: #000 url('../img/horizon.jpg') no-repeat top center;
+    background: #000 url('../img/horizon.jpg') repeat-x top center;
     background-size: 100%;
     text-align: center;
     min-width: 730px;
