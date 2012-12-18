@@ -1,4 +1,4 @@
-var glitch2d = function(canvas) {
+invaders.effect.glitch2d = function(canvas) {
 
     var context = canvas.getContext("2d");
 

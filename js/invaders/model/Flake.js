@@ -2,11 +2,11 @@ invaders.model.Flake = function() {
 
 //private:
     var randomX = function() { 
-        return Math.floor((Math.random()*640)); 
+        return Math.floor((Math.random() * invaders.game.CONTEXT_W)); 
     };
     
     var randomY = function() { 
-        return Math.floor((Math.random()*480)); 
+        return Math.floor((Math.random() * invaders.game.CONTEXT_H)); 
     };
     
     var randomSize = function() { 
@@ -23,7 +23,7 @@ invaders.model.Flake = function() {
     this.tick = function() {
         // drop
         this.y += this.speed * 1;
-        if (this.y > 480)
+        if (this.y > invaders.game.CONTEXT_H)
         {
             this.x = randomX();
             this.y = 0;
@@ -39,8 +39,8 @@ invaders.model.Flake = function() {
 
         // pan
         this.x += this.speed * x;    
-        if (this.x > 640) this.x = 0;
-        if (this.x < 0) this.x = 640;
+        if (this.x > invaders.game.CONTEXT_W) this.x = 0;
+        if (this.x < 0) this.x = invaders.game.CONTEXT_W;
 
     };
     

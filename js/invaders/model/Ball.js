@@ -8,17 +8,17 @@ invaders.model.Ball = function() {
     };  
     
 //public:
-    this.x = 315;
-    this.y = 235,
+    this.x = Math.floor(invaders.game.CONTEXT_W / 2);
+    this.y = Math.floor(invaders.game.CONTEXT_H / 2);
   
-    this.dx = this.randomD(); 
-    this.dy = this.randomD();
+    this.dx = randomD(); 
+    this.dy = randomD();
     
-    this.move = function() {
-        if( this.x < 0 || this.x > 640) 
+    this.tick = function() {
+        if( this.x < 0 || this.x > invaders.game.CONTEXT_W) 
             this.dx = -this.dx;
 
-        if( this.y < 0 || this.y > 480) 
+        if( this.y < 0 || this.y > invaders.game.CONTEXT_H) 
             this.dy = -this.dy;
 
         this.x += this.dx;

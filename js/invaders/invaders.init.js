@@ -11,44 +11,29 @@ window.requestAnimFrame = (function(){
 
 
 
-invaders.model.balls = {
+
+
+invaders.game.init = function() {
     
-   balls: [],
-   
-   move: function() {
-        if (invaders.model.balls.balls.length == 0)
-        {
-            for (var i = 0; i < 5; i++)
-                invaders.model.balls.balls.push( new invaders.model.Ball() );
-        }
+    // settigs
+    invaders.game.CANVAS = document.getElementById("invaders");
+    invaders.game.CONTEXT = invaders.game.CANVAS.getContext("2d");
+    invaders.game.CONTEXT_W = invaders.game.CANVAS.width;
+    invaders.game.CONTEXT_H = invaders.game.CANVAS.height;
     
-        for (var i in invaders.model.balls.balls)
-        {
-            var ball = invaders.model.balls.balls[i];
-            ball.move();
-        } 
-   },
-   
-   render: function(context) {
-        for (var i in invaders.model.balls.balls)
-        {
-            var ball = invaders.model.balls.balls[i];
-            ball.render(context);
-        }
-   }
+    invaders.game.TITLE_TEXT = "Tilaan Tunkeutujat";
+    invaders.game.TITLE_CAPTION = "Tulossa pian...(kohta)";
+
+    invaders.game.view = new invaders.view.TitleScreen();
+    invaders.game.controller = new invaders.controller.TitleScreen(invaders.game.view);
+    
+    //var a = new invaders.model.Scores();
+    
+    invaders.game.tick();
 };
 
-
-
-
-var view = new invaders.view.TitleScreen();
-var controller = new invaders.controller.TitleScreen(view);
-
-
-
-invaders.tick = function() {
-    controller.tick();
+invaders.game.tick = function() {
+    invaders.game.controller.tick();
     
-    requestAnimFrame(invaders.tick);
+    requestAnimFrame(invaders.game.tick);
 };
-

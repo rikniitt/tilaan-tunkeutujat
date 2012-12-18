@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    invaders.tick();
+    invaders.game.init();
 }).keyup(function(e) {
     keyhandler.keyup(e.which);
 }).keydown(function(e) {

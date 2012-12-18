@@ -1,6 +1,7 @@
 // namespace
 var invaders = {};
-invaders.settings = {};
+invaders.game = {};
 invaders.model = {};
 invaders.view = {};
 invaders.controller = {};
+invaders.effect = {};

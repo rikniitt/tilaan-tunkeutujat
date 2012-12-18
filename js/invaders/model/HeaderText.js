@@ -1,7 +1,7 @@
 invaders.model.HeaderText = function() {
    
 //private:
-    var text = "Tilaan Tunkeutujat";
+    var text = invaders.game.TITLE_TEXT;
     var counter = 1;
         
     var part = function() {               
@@ -18,14 +18,16 @@ invaders.model.HeaderText = function() {
     };
         
     this.render = function(context) {
-        context.font = "25px 'Press Start 2P'";
+        context.font = "30px 'Press Start 2P'";
         context.fillStyle = "cyan"
-        context.fillText(part(), 102, 182);
+        context.fillText(part(), 52, 182); // Harcoded position for now :)
         context.fillStyle = "white"
-        context.fillText(part(), 100, 180);
+        context.fillText(part(), 50, 180); // Harcoded position for now :)
     
         context.font = "15px 'Press Start 2P'";
-        context.fillText("Tulossa pian...", 210, 250);
+        context.fillText(invaders.game.TITLE_CAPTION, 
+                        150, 
+                        250); // Harcoded position for now :)
     };
     
     this.ticker = new invaders.model.Ticker(10, this.counterInc);
