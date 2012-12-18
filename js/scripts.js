@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    invaders.domain.headerText.counterInc();
     invaders.tick();
 }).keyup(function(e) {
     keyhandler.keyup(e.which);
