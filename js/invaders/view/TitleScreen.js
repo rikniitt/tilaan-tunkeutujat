@@ -1,13 +1,13 @@
 invaders.view.TitleScreen = function() {
     
-    this.canvasEl = document.getElementById("invaders");
-    this.context = this.canvasEl.getContext("2d");
+    this.canvasEl = invaders.game.CANVAS;
+    this.context = invaders.game.CONTEXT;
     
        
     
     this.render = function(models) {
         
-        this.context.clearRect(0, 0, 640, 480);
+        this.context.clearRect(0, 0, invaders.game.CONTEXT_W, invaders.game.CONTEXT_H);
 
         for (var i in models) {
             //console.log(models[i]);
