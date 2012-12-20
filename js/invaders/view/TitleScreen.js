@@ -19,7 +19,7 @@ invaders.view.TitleScreen = function() {
         var rand = Math.random() * 1000;
         // there seems to be some problems in reception
         if (rand <= 50) {
-            glitch2d(this.canvasEl);
+            invaders.utils.glitch2d(this.canvasEl);
         }
     };
   
