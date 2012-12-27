@@ -1,7 +1,9 @@
 $(document).ready(function() {
     invaders.game.init();
 }).keyup(function(e) {
-    keyhandler.keyup(e.which);
+    invaders.utils.keyhandler.keyup(e.which);
 }).keydown(function(e) {
-    keyhandler.keydown(e.which);
-});;
+    invaders.utils.keyhandler.keydown(e.which);
+}).keypress(function(e) {
+    invaders.utils.keyhandler.keypress(e.which);
+});

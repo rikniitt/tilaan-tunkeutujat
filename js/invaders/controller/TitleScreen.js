@@ -5,8 +5,7 @@ invaders.controller.TitleScreen = function(view) {
     this.view = view;  
     this.models = new invaders.model.Collection();
     
-    
-    
+    // populate models
     var flakes = new invaders.model.Collection();
     for (var i = 0; i < 15; i++)
         flakes.add( new invaders.model.Flake() );
@@ -20,15 +19,26 @@ invaders.controller.TitleScreen = function(view) {
     
     this.models.add( new invaders.model.HeaderText() );  
     
-    this.input = function() {
-        
-        if (keyhandler.space()) {
+    
+    // register as space-key observer
+    this.notify = function(keycode) {
+        console.log(keycode);
+        if (keycode == 32) {
             invaders.game.view = new invaders.view.Highscores();
             invaders.game.controller = new invaders.controller.Highscores(invaders.game.view);
-            return;
+        } else if (keycode == 13) {
+            invaders.game.view = new invaders.view.Game();
+            invaders.game.controller = new invaders.controller.Game(invaders.game.view);
         }
+    };
+    invaders.utils.keyhandler.addKeyObserver(32, this); // space
+    invaders.utils.keyhandler.addKeyObserver(13, this); // return
+    
+    
+    
+    this.input = function() {
         
-        var movement = keyhandler.getMovement();
+        var movement = invaders.utils.keyhandler.getMovement();
         
         for(var i in flakes.models)
             flakes.models[i].move(movement);

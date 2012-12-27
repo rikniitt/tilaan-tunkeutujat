@@ -14,6 +14,10 @@ invaders.model.Collection = function() {
     this.add = function(model) {
         this.models.push(model);
     };
+    
+    this.collection = function() {
+        return this.models;
+    };
 
 
     this.sortDesc = function() {

@@ -1,9 +1,26 @@
-var keyhandler = (function() {
+invaders.utils.keyhandler = (function() {
     var keys = new Array();
     var i = 0;
     while(i < 256) {
         keys[i] = false;
         i = i + 1;
+    }
+    
+    var keyObservers = new Array();
+    
+    function keypress(keycode) {
+        if (keyObservers[keycode]) {
+            for (var i in keyObservers[keycode]) {
+                keyObservers[keycode][i].notify(keycode);
+            }
+        }
+    }
+    
+    function addKeyObserver(keycode, observer) {
+        if (!keyObservers[keycode])
+            keyObservers[keycode] = new Array();
+        
+        keyObservers[keycode].push(observer);
     }
 
     function up() {
@@ -62,6 +79,8 @@ var keyhandler = (function() {
         keyup: keyup,
         getMovement: getMovement,
         
-        space: space
+        space: space,
+        keypress: keypress,
+        addKeyObserver: addKeyObserver
     };
 })();

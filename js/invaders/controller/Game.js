@@ -1,8 +1,10 @@
-invaders.controller.Highscores = function(view) {
+invaders.controller.Game = function(view) {
 
     
     this.view = view;  
-    this.models = new invaders.model.Scores();
+    this.models = new invaders.model.Collection();
+    this.models.add( new invaders.model.Fleat() );
+    
     
     
 
@@ -13,13 +15,15 @@ invaders.controller.Highscores = function(view) {
     };
     invaders.utils.keyhandler.addKeyObserver(32, this);
     
+    
+    
     this.logic = function() {    
         this.models.tick();
     };
 
 
     this.render = function() {
-        this.view.render(this.models.data.models);
+        this.view.render(this.models.models);
     };
     
     this.input = function() {};
