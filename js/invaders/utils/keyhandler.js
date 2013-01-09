@@ -22,6 +22,11 @@ invaders.utils.keyhandler = (function() {
         
         keyObservers[keycode].push(observer);
     }
+    
+    function removeKeyObserver(keycode, observer) {
+        if (keyObservers[keycode] && keyObservers[keycode].indexOf(observer) != -1)
+            keyObservers[keycode].splice( keyObservers[keycode].indexOf(observer), 1 );
+    }
 
     function up() {
         return keys[38] || keys[175] || keys[87];
@@ -81,6 +86,7 @@ invaders.utils.keyhandler = (function() {
         
         space: space,
         keypress: keypress,
-        addKeyObserver: addKeyObserver
+        addKeyObserver: addKeyObserver,
+        removeKeyObserver: removeKeyObserver
     };
 })();

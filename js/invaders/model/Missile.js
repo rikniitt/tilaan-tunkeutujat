@@ -1,22 +1,19 @@
-invaders.model.Ship = function(x,y) {
+invaders.model.Missile = function(x, y, direction) {
     
-//private:
+    this.pos = new invaders.model.Position(x, y, 5, 25);
     
-    
-//public:
-    
-    this.pos = new invaders.model.Position(x, y, 20, 20)
-  
+    this.direction = direction; // 1 down, -1 up
     
     this.tick = function() {
-        this.pos.y += 20;
+        this.pos.y += direction * 4;
     };
     
     this.render = function(context) {
         context.beginPath();
-        context.fillStyle = "rgb(0,0,255)";
+        context.fillStyle = "rgb(255,0,0)";
         context.rect(this.pos.x, this.pos.y, this.pos.w, this.pos.h);
         context.closePath();
         context.fill();
+        
     };
 };

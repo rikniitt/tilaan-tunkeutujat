@@ -11,15 +11,18 @@ invaders.view.Game = function() {
 
         
         
-        this.context.font = "25px 'Press Start 2P'";
-        this.context.fillStyle = "cyan"
-        this.context.fillText("PELI", 182, 100); // Harcoded position for now :)
+        this.context.font = "12px 'Press Start 2P'";
         this.context.fillStyle = "white"
-        this.context.fillText("PELI", 180, 100); // Harcoded position for now :)
+        this.context.fillText("Pisteet", 10, 20); // Harcoded position for now :)
+        this.context.fillText("Alukset", 300, 20); // Harcoded position for now :)
         
-        for (var i in models) {
-            models[i].render(this.context);
-        }
+        
+        
+        
+//        for (var i in models) {
+//            models[i].render(this.context);
+//        }
+        models.render(this.context);
 
 
     };

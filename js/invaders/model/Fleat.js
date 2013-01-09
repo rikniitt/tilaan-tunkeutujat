@@ -1,5 +1,6 @@
 invaders.model.Fleat = function() {
 
+    var ROW_NUM = 5;
     
     // populate ships
     var ships = new invaders.model.Collection();
@@ -7,7 +8,7 @@ invaders.model.Fleat = function() {
     
     var curRowTick = 0;
     var curDirTick = -1; // -1 to left and 1 to right
-    var shipTicker = new invaders.model.Ticker(10, fleatMove);
+    var shipTicker = new invaders.model.Ticker(15, fleatMove);
     
     this.tick = function() {
       shipTicker.tick();  
@@ -17,34 +18,49 @@ invaders.model.Fleat = function() {
     };
     
     function fleatMove() {
-//        console.log(ships.collection()[curRowTick].collection()[0].x);
-//        console.log(ships.collection()[curRowTick].collection()[9].x);
-        if (ships.collection()[curRowTick].collection()[0].x < 40 || ships.collection()[curRowTick].collection()[9].x > 600) {
-            ships.tick(); // drop row down
-            curDirTick *= -1; // change direction
-            return;
-        } else {
-            for (var i in ships.collection()[curRowTick].collection()) {
-                var ship = ships.collection()[curRowTick].collection()[i];
-                ship.x += 40 * curDirTick;
-            }
+
+        for (var i in ships.collection()[curRowTick].collection()) {
+            var ship = ships.collection()[curRowTick].collection()[i];
+            ship.pos.x += 20 * curDirTick;
         }
+        
+        if (curRowTick == (ROW_NUM - 1) && (ships.collection()[curRowTick].collection()[0].pos.x < 20 || ships.collection()[curRowTick].collection()[8].pos.x > 600)) {
+            ships.tick(); // drop row down
+
+            curDirTick *= -1; // change direction
+
+            
+        }
+        
         curRowTick++;
-        curRowTick %= 6;
+        curRowTick %= ROW_NUM;
     };
     
     function populateShips() {
         var y = 40;
-        for (var i = 0; i<6; i++) {
+        for (var i = 0; i<ROW_NUM; i++) {
             var row = new invaders.model.Collection();
             var x = 130;
-            for (var j = 0; j < 10; j++) {
+            for (var j = 0; j < 9; j++) {
                 row.add( new invaders.model.Ship(x,y) );
                 x += 40;
             }
             y += 40;
             ships.add(row);
         }
+    };
+    
+    
+    this.checkCollision = function(otherPosition) {
+        for (var r in ships.collection()) {
+            for (var c in ships.collection()[r].collection()) {
+                var ship = ships.collection()[r].collection()[c];
+                
+                if (ship.pos.collide(otherPosition))
+                    return true;
+            }
+        }
+        return false;
     };
 //    
 //    this.collection = function() {

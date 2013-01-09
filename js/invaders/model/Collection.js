@@ -2,8 +2,9 @@ invaders.model.Collection = function() {
     this.models = [];
     
     this.tick = function() {
-        for (var i in this.models)
+        for (var i in this.models) {
             this.models[i].tick();
+        }
     };
     
     this.render = function(context) {
