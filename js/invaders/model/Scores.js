@@ -73,6 +73,24 @@ invaders.model.Scores = function() {
     };
     
     this.tick = function() {};
-    this.render = function(context) {};
+    
+    this.render = function(context) {
+        
+        context.font = "15px 'Press Start 2P'";
+        var x = 200;
+        var y = 140;
+        
+        var sco = this.scores();
+        
+        for (var i = 0; i<sco.length; i++) {
+            var pos = i + 1;
+            if (pos<10) 
+                pos = "0"+pos;
+            var name = sco[i].name;
+            var s = sco[i].score;
+            
+            context.fillText(pos + ".  " + name + "  " + s, x, (y + i * 20)); 
+        }
+    };
   
 };
