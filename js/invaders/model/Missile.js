@@ -1,8 +1,9 @@
 invaders.model.Missile = function(x, y, direction) {
     
-    this.pos = new invaders.model.Position(x, y, 5, 25);
+    this.pos = new invaders.model.Position(x, (y + (direction * Math.floor(25))), 5, 25);
     
     this.direction = direction; // 1 down, -1 up
+    this.tankMissile = (direction === 1) ? false : true;
     
     this.tick = function() {
         this.pos.y += direction * 4;

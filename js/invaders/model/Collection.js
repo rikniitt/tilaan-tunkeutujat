@@ -16,6 +16,14 @@ invaders.model.Collection = function() {
         this.models.push(model);
     };
     
+    this.remove = function(model) {
+        
+        for (var i in this.models)
+            if (model == this.models[i])
+                this.models.splice(i, 1);   
+        
+    };
+    
     this.collection = function() {
         return this.models;
     };

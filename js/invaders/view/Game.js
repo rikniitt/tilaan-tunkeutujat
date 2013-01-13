@@ -5,7 +5,7 @@ invaders.view.Game = function() {
     
        
     
-    this.render = function(models) {
+    this.render = function(models, score, ships) {
         
         this.context.clearRect(0, 0, invaders.game.CONTEXT_W, invaders.game.CONTEXT_H);
 
@@ -13,8 +13,8 @@ invaders.view.Game = function() {
         
         this.context.font = "12px 'Press Start 2P'";
         this.context.fillStyle = "white"
-        this.context.fillText("Pisteet", 10, 20); // Harcoded position for now :)
-        this.context.fillText("Alukset", 300, 20); // Harcoded position for now :)
+        this.context.fillText("Pisteet " + score, 10, 20); // Harcoded position for now :)
+        this.context.fillText("Alukset " + ships, 300, 20); // Harcoded position for now :)
         
         
         

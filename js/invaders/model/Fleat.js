@@ -2,6 +2,9 @@ invaders.model.Fleat = function() {
 
     var ROW_NUM = 5;
     
+    var leftX;
+    var rightX;
+    
     // populate ships
     var ships = new invaders.model.Collection();
     populateShips();
@@ -9,6 +12,9 @@ invaders.model.Fleat = function() {
     var curRowTick = 0;
     var curDirTick = -1; // -1 to left and 1 to right
     var shipTicker = new invaders.model.Ticker(15, fleatMove);
+    
+    
+    
     
     this.tick = function() {
       shipTicker.tick();  
@@ -24,12 +30,23 @@ invaders.model.Fleat = function() {
             ship.pos.x += 20 * curDirTick;
         }
         
-        if (curRowTick == (ROW_NUM - 1) && (ships.collection()[curRowTick].collection()[0].pos.x < 20 || ships.collection()[curRowTick].collection()[8].pos.x > 600)) {
-            ships.tick(); // drop row down
+        
+        
+//        console.log(leftX + " " + rightX); 
+//        console.log(ships.collection()[curRowTick].collection()[0].pos.left() + " " + ships.collection()[curRowTick].collection()[8].pos.right()); 
+        
+        if (curRowTick == (ROW_NUM - 1)) {
+            leftX += 20 * curDirTick;
+            rightX += 20 * curDirTick;
+        
+        if ((leftX < 20 || rightX > 600)) 
+            {
+                ships.tick(); // drop row down
 
-            curDirTick *= -1; // change direction
+                curDirTick *= -1; // change direction
 
-            
+
+            }
         }
         
         curRowTick++;
@@ -45,9 +62,27 @@ invaders.model.Fleat = function() {
                 row.add( new invaders.model.Ship(x,y) );
                 x += 40;
             }
+            
+            
             y += 40;
             ships.add(row);
         }
+        
+        leftX = ships.collection()[0].collection()[0].pos.left();
+        rightX = ships.collection()[0].collection()[ships.collection()[0].collection().length - 1].pos.right();
+    };
+    
+    
+    this.fireMissile = function() {
+        var shootMissile = Math.floor((Math.random()*100));
+        
+        if (shootMissile < 2) {
+            var row = Math.floor((Math.random() * ships.collection().length));
+            var col = Math.floor((Math.random() * ships.collection()[row].collection().length));
+            return ships.collection()[row].collection()[col];
+        }
+        
+        return false;
     };
     
     
@@ -57,7 +92,10 @@ invaders.model.Fleat = function() {
                 var ship = ships.collection()[r].collection()[c];
                 
                 if (ship.pos.collide(otherPosition))
-                    return true;
+                {
+                    ships.collection()[r].remove(ship);
+                    return r;
+                }
             }
         }
         return false;
