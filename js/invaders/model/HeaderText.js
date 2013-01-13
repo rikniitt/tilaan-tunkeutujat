@@ -1,3 +1,6 @@
+/**
+ * Title screen header text
+ */
 invaders.model.HeaderText = function() {
    
 //private:

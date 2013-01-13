@@ -1,3 +1,6 @@
+/**
+ * Bouncing ball
+ */
 invaders.model.Ball = function() {
     
 //private:

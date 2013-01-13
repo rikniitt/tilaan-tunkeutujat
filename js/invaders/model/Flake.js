@@ -1,3 +1,6 @@
+/**
+* Dropping flake in titlescreen.
+*/
 invaders.model.Flake = function() {
 
 //private:

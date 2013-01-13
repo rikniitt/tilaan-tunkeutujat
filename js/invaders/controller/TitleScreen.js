@@ -1,3 +1,6 @@
+/**
+ * Title screen controller
+ */
 invaders.controller.TitleScreen = function(view) {
     
     var bgPos = 0;
@@ -19,11 +22,9 @@ invaders.controller.TitleScreen = function(view) {
     
     this.models.add( new invaders.model.HeaderText() );  
     
+
     
- 
-    
-    
-    // register as space-key observer
+    // Callback for keypress keyhandler
     this.notify = function(keycode) {
         
         if (keycode == 32) {            
@@ -32,7 +33,6 @@ invaders.controller.TitleScreen = function(view) {
             invaders.game.view = new invaders.view.Highscores();
             invaders.game.controller = new invaders.controller.Highscores(invaders.game.view);
         } else if (keycode == 13) {
-                        
             invaders.utils.keyhandler.observersReset();
             
             invaders.game.view = new invaders.view.Game();

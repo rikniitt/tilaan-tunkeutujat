@@ -1,3 +1,6 @@
+/**
+ * Creates noise and glitch to canvas.
+ */
 invaders.utils.glitch2d = function(canvas) {
 
     var context = canvas.getContext("2d");

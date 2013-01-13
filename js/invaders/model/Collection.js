@@ -1,3 +1,7 @@
+/**
+ * Container for models.
+ * All models which are added should implement tick and render functions.
+ */
 invaders.model.Collection = function() {
     this.models = [];
     
@@ -8,8 +12,9 @@ invaders.model.Collection = function() {
     };
     
     this.render = function(context) {
-        for (var i in this.models)
+        for (var i in this.models) {
             this.models[i].render(context);
+        }
     };
     
     this.add = function(model) {
@@ -17,11 +22,11 @@ invaders.model.Collection = function() {
     };
     
     this.remove = function(model) {
-        
-        for (var i in this.models)
-            if (model == this.models[i])
-                this.models.splice(i, 1);   
-        
+        for (var i in this.models) {
+            if (model == this.models[i]) {
+                this.models.splice(i, 1); 
+            }
+        }
     };
     
     this.collection = function() {

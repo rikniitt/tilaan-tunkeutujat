@@ -12,7 +12,6 @@ window.requestAnimFrame = (function(){
 
 
 
-
 invaders.game.init = function() {
     
     // settigs
@@ -24,22 +23,31 @@ invaders.game.init = function() {
     invaders.game.TITLE_TEXT = "Tilaan Tunkeutujat";
     invaders.game.TITLE_CAPTION = "Avaruusvalloittaja peli";
     
+    // Global container (used if now backend higscore service is available)
     invaders.game.SCORES = [];
     
-    invaders.utils.sounds.create("audio/explosion.wav", "exp");
-    invaders.utils.sounds.create("audio/piu.wav", "ough");
+    // Load all sounds
+    invaders.utils.sounds.create("audio/explosion.wav", "tank_explosion");
+    invaders.utils.sounds.create("audio/piu.wav", "tank_missile");
+    invaders.utils.sounds.create("audio/argh.wav", "ship1_explosion");
+    invaders.utils.sounds.create("audio/ouch.wav", "ship2_explosion");
+    invaders.utils.sounds.create("audio/ough.wav", "ship3_explosion");
     
-
+    
+    // Set Main view and controller as current
     invaders.game.view = new invaders.view.TitleScreen();
     invaders.game.controller = new invaders.controller.TitleScreen(invaders.game.view);
+
     
-    //var a = new invaders.model.Scores();
-    
+    // Start the game 
     invaders.game.tick();
 };
 
+
 invaders.game.tick = function() {
-    invaders.game.controller.tick();
     
+    // Call tick of current controller
+    invaders.game.controller.tick();
+
     requestAnimFrame(invaders.game.tick);
 };

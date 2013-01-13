@@ -1,3 +1,6 @@
+/**
+ * Input for new highscore
+ */
 invaders.model.ScoreInput = function(readyCallback) {
     this.input = "";
     
@@ -7,7 +10,7 @@ invaders.model.ScoreInput = function(readyCallback) {
     
     var scoreInputTicker = new invaders.model.Ticker(15, move);
     
-
+    
     function move() {
         
         var movement = invaders.utils.keyhandler.getMovement();
@@ -19,9 +22,7 @@ invaders.model.ScoreInput = function(readyCallback) {
         
         if (movement[0] == 1)
             that.put();
-        
-        
-        console.log(that.input);
+
     };
     
     this.put = function() {

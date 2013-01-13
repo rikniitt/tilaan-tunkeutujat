@@ -1,3 +1,6 @@
+/**
+ * Position for models.
+ */
 invaders.model.Position = function(x,y,w,h) {
     
     this.x = x; // x-position

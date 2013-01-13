@@ -1,13 +1,16 @@
+/**
+ * Cover or shield in the game
+ */
 invaders.model.CoverShield = function(topX, topY) {
     
+    // Position array. If [x][y] is false, that part of shield is shattered.
     var pixels = new Array();
     var pixelSize = 20;
     
+    // Position for whole shield.
     this.pos = new invaders.model.Position(topX, topY, pixelSize * 3, pixelSize * 4);
     
-    
-    
-    
+    // Populate shield
     for (var y = 0; y<4; y++) {
         pixels[y] = new Array();
         for (var x = 0; x<3; x++) {
@@ -19,15 +22,13 @@ invaders.model.CoverShield = function(topX, topY) {
                                                             pixelSize, 
                                                             pixelSize);
             }
-            
         }
     }
     
   
     
-    this.tick = function() {
-        
-    };
+    this.tick = function() {};
+    
     
     this.render = function(context) {
         for (var y = 0; y<4; y++) {
@@ -44,7 +45,7 @@ invaders.model.CoverShield = function(topX, topY) {
         }
     };
     
-    
+    // Check for collisions
     this.collide = function(otherPos) {
         if (this.pos.collide(otherPos)) {
             for (var y = 0; y<4; y++) {
@@ -61,6 +62,7 @@ invaders.model.CoverShield = function(topX, topY) {
     };
     
     
+    // Check if Fleat is collind with some pixel.
     this.collideWithFleat = function(fleat) {
         
         for (var y = 0; y<4; y++) {

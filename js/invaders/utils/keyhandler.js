@@ -1,3 +1,6 @@
+/**
+ * Helper to handle user input.
+ */
 invaders.utils.keyhandler = (function() {
     var keys = new Array();
     var i = 0;

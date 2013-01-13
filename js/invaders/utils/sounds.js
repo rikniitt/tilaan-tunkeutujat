@@ -1,3 +1,6 @@
+/**
+ * Helper to play sounds
+ */
 invaders.utils.sounds = (function() {
     
     var body = document.getElementsByTagName('body')[0];

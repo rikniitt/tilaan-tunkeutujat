@@ -1,3 +1,6 @@
+/**
+ * Container for enemy ships.
+ */
 invaders.model.Fleat = function() {
 
     var ROW_NUM = 5;
@@ -19,9 +22,11 @@ invaders.model.Fleat = function() {
     this.tick = function() {
       shipTicker.tick();  
     };
+    
     this.render = function(context) {
       ships.render(context);  
     };
+    
     
     function fleatMove() {
 
@@ -29,11 +34,7 @@ invaders.model.Fleat = function() {
             var ship = ships.collection()[curRowTick].collection()[i];
             ship.pos.x += 20 * curDirTick;
         }
-        
-        
-        
-//        console.log(leftX + " " + rightX); 
-//        console.log(ships.collection()[curRowTick].collection()[0].pos.left() + " " + ships.collection()[curRowTick].collection()[8].pos.right()); 
+         
         
         if (curRowTick == (ROW_NUM - 1)) {
             leftX += 20 * curDirTick;
@@ -44,8 +45,6 @@ invaders.model.Fleat = function() {
                 ships.tick(); // drop row down
 
                 curDirTick *= -1; // change direction
-
-
             }
         }
         
@@ -53,13 +52,21 @@ invaders.model.Fleat = function() {
         curRowTick %= ROW_NUM;
     };
     
+    
     function populateShips() {
         var y = 40;
         for (var i = 0; i<ROW_NUM; i++) {
             var row = new invaders.model.Collection();
             var x = 130;
             for (var j = 0; j < 9; j++) {
-                row.add( new invaders.model.Ship(x,y) );
+                    if (i == 0)
+                        var ship = new invaders.model.Ship(x, y, "lime");
+                    if (i == 1 || i == 2)
+                        var ship = new invaders.model.Ship(x, y, "fuchsia");
+                    if (i == 3 || i == 4)
+                        var ship = new invaders.model.Ship(x, y, "cyan");
+                    
+                row.add( ship );
                 x += 40;
             }
             
@@ -93,7 +100,13 @@ invaders.model.Fleat = function() {
                 
                 if (ship.pos.collide(otherPosition))
                 {
-                    invaders.utils.sounds.play("ough");
+                    if (r == 0)
+                        invaders.utils.sounds.play("tank_explosion");
+                    if (r == 1 || r == 2)
+                        invaders.utils.sounds.play("tank_explosion");
+                    if (r == 3 || r == 4)
+                        invaders.utils.sounds.play("tank_explosion");
+                    
                     ships.collection()[r].remove(ship);
                     return r;
                 }
@@ -102,11 +115,6 @@ invaders.model.Fleat = function() {
         return false;
     };
     
-    
-    
-//    
-//    this.collection = function() {
-//      return ships;  
-//    };
+   
 };
 

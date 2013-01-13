@@ -1,4 +1,8 @@
+/**
+ * Container for highscores
+ */
 invaders.model.Scores = function() {
+    
     var LIMIT = 10;
    
     
@@ -13,16 +17,17 @@ invaders.model.Scores = function() {
     
     this.getScores = function() {
         
-        
+        // Get scores from backend
         //var scoresFromBackEnd = this.backend.getData();
+        // Backend not working now. Use fallback.
         var scoresFromBackEnd = [];
-        //console.log(scoresFromBackEnd);
         
+        // If got now scores. Use local
         if (scoresFromBackEnd.length == 0) {
         
+            // If global holder contains no scores, populate some.
             if (invaders.game.SCORES.length == 0) {
 
-                // devel data
                 this.add(new invaders.model.Score("100", "PMS"));
                 this.add(new invaders.model.Score("1000", "SDS"));
                 this.add(new invaders.model.Score("150", "JQW"));
@@ -34,7 +39,7 @@ invaders.model.Scores = function() {
                 this.add(new invaders.model.Score("800", "RYE"));
                 this.add(new invaders.model.Score("900", "FGH"));
                 this.add(new invaders.model.Score("200", "ASD"));
-                //console.log(this.data);
+
                 
                 invaders.game.SCORES = this.data;
                 
@@ -48,21 +53,25 @@ invaders.model.Scores = function() {
         }
     };
     
+    
+    // Save current scores to backend
     this.putScores = function() {
         this.backend.postData(this.data.collection());
     }
     
      
+    // initialize 
     this.data = new invaders.model.Collection();
     this.backend = new invaders.utils.Backend("http://aqueous-ravine-5531.herokuapp.com/app/games/58/scores");
     this.getScores();
     
-    //this.putScores();
     
+    // HIghest of current scores
     this.highScore = function() {
         return this.data.collection()[0].score;
     };
     
+    // Lowest of current scores
     this.lowScore = function() {
         var data = this.data.collection();
         return data[data.length - 1].score;
@@ -72,7 +81,10 @@ invaders.model.Scores = function() {
         return this.data.collection();
     };
     
+    
+    
     this.tick = function() {};
+    
     
     this.render = function(context) {
         

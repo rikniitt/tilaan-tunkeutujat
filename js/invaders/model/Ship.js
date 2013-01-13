@@ -1,7 +1,10 @@
-invaders.model.Ship = function(x,y) {
+/**
+ * Enemy ship
+ */
+invaders.model.Ship = function(x,y, color) {
     
 //private:
-    
+    var color = color
     
 //public:
     
@@ -14,7 +17,7 @@ invaders.model.Ship = function(x,y) {
     
     this.render = function(context) {
         context.beginPath();
-        context.fillStyle = "rgb(0,0,255)";
+        context.fillStyle = color;
         context.rect(this.pos.x, this.pos.y, this.pos.w, this.pos.h);
         context.closePath();
         context.fill();

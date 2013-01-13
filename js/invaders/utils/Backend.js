@@ -1,3 +1,6 @@
+/**
+ * Saves and retrieves data from highscore backend.
+ */
 invaders.utils.Backend = function(serviceUrl) {
     
     function syncRequest(method, data) {

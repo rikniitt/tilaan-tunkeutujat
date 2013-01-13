@@ -1,3 +1,6 @@
+/**
+ * Helper class to slow down animation.
+ */
 invaders.model.Ticker = function(limit, onTick) {
   var ticks = 0;
   var limit = limit;

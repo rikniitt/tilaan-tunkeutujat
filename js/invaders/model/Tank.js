@@ -1,3 +1,6 @@
+/**
+ * User controlled tank
+ */
 invaders.model.Tank = function() {
 
     
