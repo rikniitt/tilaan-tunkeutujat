@@ -115,6 +115,15 @@ invaders.model.Fleat = function() {
         return false;
     };
     
+    this.size = function() {
+		 var count = 0;
+		 for (var r in ships.collection()) {
+			 count += ships.collection()[r].collection().length;
+			}
+
+		 return count;
+	 }
+    
    
 };
 

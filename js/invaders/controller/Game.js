@@ -185,6 +185,11 @@ invaders.controller.Game = function(view) {
         if (shipMissile) {
             fireMissile(shipMissile, 1);
         }
+        
+        
+        // Check if there is now enemies left
+        if (fleat.size() <= 0)
+				gameOver();
 
         
         this.models.tick();
