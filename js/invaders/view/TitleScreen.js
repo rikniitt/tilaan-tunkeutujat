@@ -16,6 +16,13 @@ invaders.view.TitleScreen = function() {
         models.render(this.context);
         
 
+
+        this.context.font = "12px 'Press Start 2P'";
+        this.context.fillText("Return aloita peli tai space ennätyslista.", 50, 470); 
+        
+        
+                        //
+                        //
         // get space weather forecast
         var rand = Math.random() * 1000;
         // there seems to be some problems in reception

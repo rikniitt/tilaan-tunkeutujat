@@ -20,19 +20,20 @@ invaders.controller.TitleScreen = function(view) {
     this.models.add( new invaders.model.HeaderText() );  
     
     
+ 
+    
+    
     // register as space-key observer
     this.notify = function(keycode) {
-        console.log(keycode);
+        
         if (keycode == 32) {            
-            invaders.utils.keyhandler.removeKeyObserver(32, this); // space
-            invaders.utils.keyhandler.removeKeyObserver(13, this); // return
+            invaders.utils.keyhandler.observersReset();
             
             invaders.game.view = new invaders.view.Highscores();
             invaders.game.controller = new invaders.controller.Highscores(invaders.game.view);
         } else if (keycode == 13) {
                         
-            invaders.utils.keyhandler.removeKeyObserver(32, this); // space
-            invaders.utils.keyhandler.removeKeyObserver(13, this); // return
+            invaders.utils.keyhandler.observersReset();
             
             invaders.game.view = new invaders.view.Game();
             invaders.game.controller = new invaders.controller.Game(invaders.game.view);

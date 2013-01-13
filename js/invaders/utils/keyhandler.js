@@ -9,6 +9,7 @@ invaders.utils.keyhandler = (function() {
     var keyObservers = new Array();
     
     function keypress(keycode) {
+        //console.log(keycode);
         if (keyObservers[keycode]) {
             for (var i in keyObservers[keycode]) {
                 keyObservers[keycode][i].notify(keycode);
@@ -23,9 +24,15 @@ invaders.utils.keyhandler = (function() {
         keyObservers[keycode].push(observer);
     }
     
+    function observersReset() {
+        keyObservers = new Array();
+    }
+    
     function removeKeyObserver(keycode, observer) {
         if (keyObservers[keycode] && keyObservers[keycode].indexOf(observer) != -1)
-            keyObservers[keycode].splice( keyObservers[keycode].indexOf(observer), 1 );
+            keyObservers[keycode].splice( observer, 1 );
+        
+        console.log(keyObservers);
     }
 
     function up() {
@@ -87,6 +94,7 @@ invaders.utils.keyhandler = (function() {
         space: space,
         keypress: keypress,
         addKeyObserver: addKeyObserver,
-        removeKeyObserver: removeKeyObserver
+        removeKeyObserver: removeKeyObserver,
+        observersReset: observersReset
     };
 })();

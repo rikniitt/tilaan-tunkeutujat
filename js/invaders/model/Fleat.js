@@ -93,6 +93,7 @@ invaders.model.Fleat = function() {
                 
                 if (ship.pos.collide(otherPosition))
                 {
+                    invaders.utils.sounds.play("ough");
                     ships.collection()[r].remove(ship);
                     return r;
                 }
@@ -100,6 +101,9 @@ invaders.model.Fleat = function() {
         }
         return false;
     };
+    
+    
+    
 //    
 //    this.collection = function() {
 //      return ships;  

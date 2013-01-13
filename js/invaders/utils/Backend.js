@@ -7,8 +7,8 @@ invaders.utils.Backend = function(serviceUrl) {
         req.open(method, serviceUrl, false);
         
         req.setRequestHeader("Content-type","application/json");
-//        req.setRequestHeader("Content-length", data.length);
-//        req.setRequestHeader("Connection", "close");
+        req.setRequestHeader("Content-length", data.length);
+        req.setRequestHeader("Connection", "close");
 
         req.send(data);
 
@@ -37,12 +37,12 @@ invaders.utils.Backend = function(serviceUrl) {
     
     
     this.getData = function() {
-        var json = syncRequest("GET", "");
+        var json = syncRequest("POST", "");
         return jsonStringToKeyValue(json);
      };
 
      this.postData = function(data) {
         var json = keyValueToJsonString(data);
-        return syncRequest("POST", json);
+        return syncRequest("PUT", json);
      };
 };

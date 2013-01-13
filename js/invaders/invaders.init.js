@@ -22,7 +22,13 @@ invaders.game.init = function() {
     invaders.game.CONTEXT_H = invaders.game.CANVAS.height;
     
     invaders.game.TITLE_TEXT = "Tilaan Tunkeutujat";
-    invaders.game.TITLE_CAPTION = "Tulossa pian...(kohta)";
+    invaders.game.TITLE_CAPTION = "Avaruusvalloittaja peli";
+    
+    invaders.game.SCORES = [];
+    
+    invaders.utils.sounds.create("audio/explosion.wav", "exp");
+    invaders.utils.sounds.create("audio/piu.wav", "ough");
+    
 
     invaders.game.view = new invaders.view.TitleScreen();
     invaders.game.controller = new invaders.controller.TitleScreen(invaders.game.view);

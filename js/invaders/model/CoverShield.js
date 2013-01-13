@@ -58,5 +58,21 @@ invaders.model.CoverShield = function(topX, topY) {
             }
         }
         return false;
-    }
+    };
+    
+    
+    this.collideWithFleat = function(fleat) {
+        
+        for (var y = 0; y<4; y++) {
+            for (var x = 0; x<3; x++) {
+                var pixel = pixels[y][x];
+                if (pixel && fleat.checkCollision(pixel)) {
+                    pixels[y][x] = false;
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+    };
 };

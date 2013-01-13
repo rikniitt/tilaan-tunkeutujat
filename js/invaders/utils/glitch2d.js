@@ -27,7 +27,20 @@ invaders.utils.glitch2d = function(canvas) {
 
 
     // create glitch aka. transfers pixels to left	
-    for (var y =glitchStartY; y < (glitchStartY+glitchWidth); y++) {
+    for (var y = glitchStartY; y < (glitchStartY+glitchWidth); y++) {
+            for (var x = 10; x < width; x++) {
+                    var pixel = getPixel(imageData, x, y);
+                    //console.log(pixel);
+                    if (pixel[3] == 255) {
+                            setPixel(imageData, x, y, 255, 255, 255, 255);
+                            setPixel(imageData, x-10, y, pixel[0], pixel[1], pixel[2], 255);			
+                    }
+
+            }
+    }
+    
+    // create glitch aka. transfers pixels to left	
+    for (var y = 60; y < (60+glitchWidth); y++) {
             for (var x = 10; x < width; x++) {
                     var pixel = getPixel(imageData, x, y);
                     //console.log(pixel);

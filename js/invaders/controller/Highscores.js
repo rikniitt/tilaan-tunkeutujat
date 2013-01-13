@@ -7,14 +7,15 @@ invaders.controller.Highscores = function(view, newScore) {
     
     
     if (newScore >= this.models.lowScore() ) {
-        this.models.add(new invaders.model.Score(newScore, "AAA"))
+        this.models.add(new invaders.model.Score(newScore, "AAA"));
+        //this.models.putScores();
     }
     
     
 
     
     this.notify = function() {
-        invaders.utils.keyhandler.removeKeyObserver(32, this); // space
+        invaders.utils.keyhandler.observersReset();
         
         invaders.game.view = new invaders.view.TitleScreen();
         invaders.game.controller = new invaders.controller.TitleScreen(invaders.game.view);

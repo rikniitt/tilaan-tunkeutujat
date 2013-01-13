@@ -20,14 +20,14 @@ invaders.model.HeaderText = function() {
     this.render = function(context) {
         context.font = "30px 'Press Start 2P'";
         context.fillStyle = "cyan"
-        context.fillText(part(), 52, 182); // Harcoded position for now :)
+        context.fillText(part(), 52, 82); // Harcoded position for now :)
         context.fillStyle = "white"
-        context.fillText(part(), 50, 180); // Harcoded position for now :)
+        context.fillText(part(), 50, 80); // Harcoded position for now :)
     
         context.font = "15px 'Press Start 2P'";
         context.fillText(invaders.game.TITLE_CAPTION, 
-                        150, 
-                        250); // Harcoded position for now :)
+                        130, 
+                        110); // Harcoded position for now :)
     };
     
     this.ticker = new invaders.model.Ticker(10, this.counterInc);
