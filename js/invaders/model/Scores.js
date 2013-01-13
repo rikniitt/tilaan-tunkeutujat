@@ -15,28 +15,42 @@ invaders.model.Scores = function() {
         
         
         var scoresFromBackEnd = this.backend.getData();
-        console.log(scoresFromBackEnd);
+        //console.log(scoresFromBackEnd);
         
-        // devel data
-        this.add(new invaders.model.Score("100", "PMS"));
-        this.add(new invaders.model.Score("1000", "1AasMASDS"));
-        this.add(new invaders.model.Score("150", "JQW"));
-        this.add(new invaders.model.Score("250", "AXE"));
-        this.add(new invaders.model.Score("350", "JHN"));
-        this.add(new invaders.model.Score("500", "MIC"));
-        this.add(new invaders.model.Score("750", "STV"));
-        this.add(new invaders.model.Score("50", "MIN"));
-        this.add(new invaders.model.Score("800", "RYE"));
-        this.add(new invaders.model.Score("900", "FGH"));
-        this.add(new invaders.model.Score("200", "ASD"));
-        //console.log(this.data);
+        if (scoresFromBackEnd.length == 0) {
+        
+        
+
+            // devel data
+            this.add(new invaders.model.Score("100", "PMS"));
+            this.add(new invaders.model.Score("1000", "1AasMASDS"));
+            this.add(new invaders.model.Score("150", "JQW"));
+            this.add(new invaders.model.Score("250", "AXE"));
+            this.add(new invaders.model.Score("350", "JHN"));
+            this.add(new invaders.model.Score("500", "MIC"));
+            this.add(new invaders.model.Score("750", "STV"));
+            this.add(new invaders.model.Score("50", "MIN"));
+            this.add(new invaders.model.Score("800", "RYE"));
+            this.add(new invaders.model.Score("900", "FGH"));
+            this.add(new invaders.model.Score("200", "ASD"));
+            //console.log(this.data);
+        } else {
+            for (var i in scoresFromBackEnd) {
+                this.add(new invaders.model.Score(scoresFromBackEnd[i].score, scoresFromBackEnd[i].name));
+            }
+        }
     };
+    
+    this.putScores = function() {
+        this.backend.getData(this.data.serialize());
+    }
     
      
     this.data = new invaders.model.Collection();
-    this.backend = new invaders.utils.Backend("http://aqueous-ravine-5531.herokuapp.com/app/games/58/scores")
+    this.backend = new invaders.utils.Backend("http://aqueous-ravine-5531.herokuapp.com/app/games/58/scores");
     this.getScores();
     
+    this.putScores();
     
     this.highScore = function() {
         return this.data.collection()[0].score;
