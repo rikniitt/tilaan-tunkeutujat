@@ -21,6 +21,12 @@ invaders.controller.Game = function(view) {
     
     var that = this;
     
+    var covers = new invaders.model.Collection();
+    covers.add( new invaders.model.CoverShield(50, 340) );
+    covers.add( new invaders.model.CoverShield(210, 340) );
+    covers.add( new invaders.model.CoverShield(370, 340) );
+    covers.add( new invaders.model.CoverShield(530, 340) );
+    this.models.add( covers );
     
 
     function fireMissile(who, direction) {
@@ -50,9 +56,10 @@ invaders.controller.Game = function(view) {
 
     function gameOver() {
         invaders.utils.keyhandler.removeKeyObserver(32, this); // space
-            
-        invaders.game.view = new invaders.view.TitleScreen();
-        invaders.game.controller = new invaders.controller.TitleScreen(invaders.game.view);
+        
+        invaders.game.view = new invaders.view.Highscores();
+        invaders.game.controller = new invaders.controller.Highscores(invaders.game.view,  score + (ships * 4000));
+        
     }
     
     this.notify = function(which) {
@@ -68,14 +75,48 @@ invaders.controller.Game = function(view) {
     
     
     this.logic = function() { 
-        if (fleat.checkCollision(tank.pos))
-            tankExplode();
         
         
+        
+        //console.log(covers.collection());
+        
+        
+        // check if one of fleat missiles is colliding with tank or cover.
         for (var i in missiles.collection()) {
+            
             var missile = missiles.collection()[i];
             
+            // check for cover collisin
+            var coverCollide = false;
+            for (var j in covers.collection()) {
+                if (covers.collection()[j].collide(missile.pos)) {
+                    if (missile.tankMissile) {
+                        userMissile = false;
+                    }
+                    coverCollide = true;
+                    missiles.remove(missile);
+                }
+            }
+            // exit loop if hitted
+            if (coverCollide)
+                break;
             
+            
+           // if is user fired missile. check if it is colliding with any of the enemies.
+            if (missile.tankMissile) { 
+                var shippHittedOnRow = fleat.checkCollision( userMissile.pos );
+                if (shippHittedOnRow) {
+                     missiles.remove(userMissile);
+                     score += (shippHittedOnRow+1) * 1000;                 
+                     userMissile = false;
+                } else if ( userMissile.pos.bottom() < 0) {
+                     missiles.remove(userMissile);
+                     userMissile = false;
+                }
+            }
+            
+            
+            // if enemy missile. is it colliding with tank
             if (!missile.tankMissile && tank.pos.collide(missile.pos)) {
                 tankExplode();
                 break;
@@ -83,26 +124,20 @@ invaders.controller.Game = function(view) {
             
         }
         
-        if (userMissile) {
-            
-            
-            
-            var shippHittedOnRow = fleat.checkCollision( userMissile.pos );
-            if (shippHittedOnRow) {
-                 missiles.remove(userMissile);
-                 score += (shippHittedOnRow+1) * 1000;                 
-                 userMissile = false;
-            } else if ( userMissile.pos.bottom() < 0) {
-                 missiles.remove(userMissile);
-                 userMissile = false;
-            }
+        
+        
+        // check if one of the enimies collide with tank.
+        if (fleat.checkCollision(tank.pos)) {
+            tankExplode();
         }
         
-        var shipMissile = fleat.fireMissile();
         
+        // check if it is time to fleat fire a missile
+        var shipMissile = fleat.fireMissile();
         if (shipMissile) {
             fireMissile(shipMissile, 1);
         }
+
         
         this.models.tick();
     };

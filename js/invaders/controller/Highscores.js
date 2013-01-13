@@ -1,13 +1,21 @@
-invaders.controller.Highscores = function(view) {
+invaders.controller.Highscores = function(view, newScore) {
 
     
     this.view = view;  
     this.models = new invaders.model.Scores();
     
     
+    
+    if (newScore >= this.models.lowScore() ) {
+        this.models.add(new invaders.model.Score(newScore, "AAA"))
+    }
+    
+    
 
     
     this.notify = function() {
+        invaders.utils.keyhandler.removeKeyObserver(32, this); // space
+        
         invaders.game.view = new invaders.view.TitleScreen();
         invaders.game.controller = new invaders.controller.TitleScreen(invaders.game.view);
     };
@@ -19,7 +27,7 @@ invaders.controller.Highscores = function(view) {
 
 
     this.render = function() {
-        this.view.render(this.models.data.models);
+        this.view.render(this.models);
     };
     
     this.input = function() {};

@@ -7,6 +7,8 @@ invaders.view.Highscores = function() {
     
     this.render = function(models) {
         
+        var data = models.scores();
+        
         this.context.clearRect(0, 0, invaders.game.CONTEXT_W, invaders.game.CONTEXT_H);
 
         
@@ -21,12 +23,12 @@ invaders.view.Highscores = function() {
         this.context.font = "15px 'Press Start 2P'";
         var x = 200;
         var y = 140;
-        for (var i = 0; i<models.length; i++) {
+        for (var i = 0; i<data.length; i++) {
             var pos = i + 1;
             if (pos<10) 
                 pos = "0"+pos;
-            var name = models[i].name;
-            var score = models[i].score;
+            var name = data[i].name;
+            var score = data[i].score;
             
             this.context.fillText(pos + ".  " + name + "  " + score, x, (y + i * 20)); 
         }
